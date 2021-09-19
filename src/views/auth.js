@@ -7,7 +7,7 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 
 export default function Auth() {
-  let [signIn , setSignIn] = React.useState(true)
+  let [signIn, setSignIn] = React.useState(true)
 
   const handleFormSwitch = (payload) => {
     setSignIn(payload)
@@ -15,11 +15,11 @@ export default function Auth() {
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
+      <CssBaseline/>
       {signIn && <SignIn viewSwitch={handleFormSwitch}/>}
       {!signIn && <SignUp viewSwitch={handleFormSwitch}/>}
       <Box mt={8}>
-        <Copyright />
+        <Copyright/>
       </Box>
     </Container>
   );

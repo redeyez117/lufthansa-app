@@ -1,13 +1,14 @@
 import './App.css';
 import Auth from "./views/auth";
 import {AuthProvider} from "./context/AuthContext";
-import {BrowserRouter as Router , Route , Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Dashboard from "./views/dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import Client from './views/client'
 import JobDetails from "./views/jobDetails";
 import AdminRoute from "./components/AdminRoute";
 import Profile from "./views/profile";
+
 function App() {
   return (
     <Router>

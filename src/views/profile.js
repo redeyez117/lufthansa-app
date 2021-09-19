@@ -18,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     width: '100%',
-    height:'100%',
+    height: '100%',
     marginTop: 25,
     paddingBlock: 10
   },
   infoTitle: {
-    fontSize:14,
+    fontSize: 14,
     fontWeight: '700'
   }
 }))
@@ -38,7 +38,7 @@ export default function Profile() {
   const {currentUser} = useAuth();
   const params = useParams();
 
-  function fetchJobApplications(){
+  function fetchJobApplications() {
     let data = AppliedJobsService.fetchJobApplications(currentUser.uid);
     data.on('value', response => {
       const data = response.val();
@@ -63,7 +63,7 @@ export default function Profile() {
 
   }
 
-  function fetchJobFavourites(){
+  function fetchJobFavourites() {
     let data = FavouriteJobsService.fetchJobFavourites(currentUser.uid);
     data.on('value', response => {
       const data = response.val();
@@ -76,7 +76,7 @@ export default function Profile() {
     })
   }
 
-  function getJobs(){
+  function getJobs() {
     let data = JobsDataService.getAll();
     data.on('value', response => {
       const data = response.val();
@@ -104,23 +104,23 @@ export default function Profile() {
   }
 
   useEffect(async () => {
-     await fetchJobApplications();
-     await fetchJobFavourites();
+    await fetchJobApplications();
+    await fetchJobFavourites();
   }, []);
 
-  useEffect(()=>{
-     fetchUserInfo()
-  },[])
+  useEffect(() => {
+    fetchUserInfo()
+  }, [])
 
-  useEffect( async() => {
+  useEffect(async () => {
     await getJobs()
-  }, [appliedJobIds,favouriteJobIds]);
+  }, [appliedJobIds, favouriteJobIds]);
 
   return (
     <Container>
       <Paper className={classes.paper}>
         <Avatar></Avatar>
-        <div style={{marginTop:10}}>
+        <div style={{marginTop: 10}}>
           {userInfo.length && <div>
             <Typography component="h5">
               <span className={classes.infoTitle}>Fullname: </span>
@@ -143,7 +143,7 @@ export default function Profile() {
             No Info Available
           </Typography>}
         </div>
-        <NavLink style={{marginTop:10,textDecoration:'none'}} to='/job-listings'>
+        <NavLink style={{marginTop: 10, textDecoration: 'none'}} to='/job-listings'>
           <Button color="primary" variant="contained">
             Go Back
           </Button>

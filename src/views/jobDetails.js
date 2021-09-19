@@ -8,7 +8,7 @@ import AppliedJobsService from "../services/applied";
 import FavouriteJobsService from "../services/favourite"
 import {useAuth} from "../context/AuthContext";
 
-const useStyles = makeStyles(theme=>({
+const useStyles = makeStyles(theme => ({
   jobContainer: {
     height: '100vh',
     display: "flex",
@@ -18,13 +18,13 @@ const useStyles = makeStyles(theme=>({
   },
   jobPaper: {
     width: '100%',
-    paddingInline:10,
-    paddingBlock:25
+    paddingInline: 10,
+    paddingBlock: 25
   },
   actionBtn: {
-    display:"flex",
-    alignItems:"center",
-    paddingTop:15
+    display: "flex",
+    alignItems: "center",
+    paddingTop: 15
   }
 }))
 
@@ -37,14 +37,14 @@ export default function JobDetails(props) {
 
   const params = useParams();
 
-  function getJob(){
+  function getJob() {
     var data = JobsDataService.fetch(params.id);
     data.on('value', data => {
       setJob(data.val())
     })
   }
 
-  function getHasAppliedToJob(){
+  function getHasAppliedToJob() {
     let applied = AppliedJobsService.jobApplicants(params.id);
     applied.on('value', response => {
       const data = response.val();
@@ -59,7 +59,7 @@ export default function JobDetails(props) {
     })
   }
 
-  function getHasIsFavourite(){
+  function getHasIsFavourite() {
     let favourite = FavouriteJobsService.jobFavourites(params.id);
     favourite.on('value', response => {
       const data = response.val();
@@ -110,7 +110,7 @@ export default function JobDetails(props) {
   return job ? (
     <Container className={classes.jobContainer}>
       <NavLink to='/job-listings'>
-        <Button style={{marginBottom:5}} color="primary" variant="contained">
+        <Button style={{marginBottom: 5}} color="primary" variant="contained">
           Go Back
         </Button>
       </NavLink>
@@ -126,11 +126,11 @@ export default function JobDetails(props) {
         </div>
         <hr/>
         <div className={classes.actionBtn}>
-          <Button onClick={apply} disabled={isApplicant} style={{marginRight:10}} color="primary" variant="contained">
-            { isApplicant ? 'Applied' : 'Apply'}
+          <Button onClick={apply} disabled={isApplicant} style={{marginRight: 10}} color="primary" variant="contained">
+            {isApplicant ? 'Applied' : 'Apply'}
           </Button>
           <Button onClick={applyFavourite} disabled={isFavourite} color="secondary" variant="outlined">
-            { isFavourite ? 'Already on favourite list' : 'Add to favourite'}
+            {isFavourite ? 'Already on favourite list' : 'Add to favourite'}
           </Button>
         </div>
       </Paper>

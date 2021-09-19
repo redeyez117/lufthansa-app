@@ -10,10 +10,11 @@ import Paper from '@material-ui/core/Paper';
 import {Button, Container, TextField, Typography} from "@material-ui/core";
 import {ExitToApp, RemoveRedEyeRounded} from "@material-ui/icons";
 import JobsDataService from '../services/jobs';
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {useAuth} from "../context/AuthContext";
 import {useHistory} from 'react-router-dom'
-const useStyles = makeStyles(theme=>({
+
+const useStyles = makeStyles(theme => ({
   dashboardContainer: {
     height: '100vh',
     display: "flex",
@@ -26,7 +27,7 @@ const useStyles = makeStyles(theme=>({
   },
   tableWrapper: {
     marginTop: 60,
-    marginBottom:15
+    marginBottom: 15
   },
   header: {
     fontSize: 16,
@@ -45,16 +46,16 @@ const useStyles = makeStyles(theme=>({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    width:400
+    width: 400
   },
 
   paper: {
     display: 'flex',
-    alignItems:'center',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    width:'100%',
-    marginTop:25,
-    paddingBlock:10
+    width: '100%',
+    marginTop: 25,
+    paddingBlock: 10
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
@@ -90,7 +91,7 @@ export default function JobsTable() {
     try {
       await logout()
       history.push('/authenticate')
-    } catch(e) {
+    } catch (e) {
       console.log(e)
     }
   }
@@ -104,17 +105,17 @@ export default function JobsTable() {
     setTableData(filtered);
   }
 
-  useEffect(()  => {
+  useEffect(() => {
     getJobs();
-  },[])
+  }, [])
   return (
     <Container className={classes.dashboardContainer}>
       <Typography component="h4" variant="h5">
         Available jobs to apply
       </Typography>
       <Paper elevation={1} className={classes.paper}>
-        <NavLink style={{textDecoration:'none'}} to={`/profile/${currentUser.uid}`}>
-          <Button style={{marginLeft:10}}
+        <NavLink style={{textDecoration: 'none'}} to={`/profile/${currentUser.uid}`}>
+          <Button style={{marginLeft: 10}}
                   variant="outlined"
                   color="primary"
                   className={classes.extendedIcon}
@@ -128,7 +129,7 @@ export default function JobsTable() {
           variant="outlined"
           color="secondary"
           className={classes.extendedIcon}
-          startIcon={<ExitToApp />}
+          startIcon={<ExitToApp/>}
           onClick={handleLogout}
         >
           Log Out
